@@ -1,15 +1,24 @@
 package org.zero.boot3.common.response;
 
+import org.zero.boot3.common.enums.CodeEnum;
+
 public class ResultVO<T> {
 
     private String code;
     private String massage;
     private T data;
 
-    public ResultVO<T> build (String code, String massage, T data) {
-        return new ResultVO<>(code, massage, data);
+    public static <T>ResultVO<T> build (String code, String massage, T data) {
+        return ok(code, massage, data);
     }
 
+    public static <T> ResultVO<T> ok(String code, String massage, T data) {
+        return build(code, massage, data);
+    }
+
+    public static <T> ResultVO<T> ok (CodeEnum codeEnum, T data) {
+        return build(codeEnum.code(), codeEnum.massage(), data);
+    }
     public ResultVO() {
     }
 
