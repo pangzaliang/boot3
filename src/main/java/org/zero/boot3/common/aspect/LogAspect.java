@@ -60,7 +60,7 @@ public class LogAspect {
     public void afterThrowing(JoinPoint point, Exception e){
         String name = point.getSignature().getName();
         System.out.println(name + "方法抛出异常,异常为:" + e.getMessage());
-        logger.error("name Exception = ", e);
+        logger.error(name + " Exception = ", e.getMessage());
     }
 
     /**
